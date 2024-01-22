@@ -9,11 +9,7 @@ const initialState = {
 
 export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users', {
-      headers: {
-        'Cache-Control': 'no-cache',
-      },
-    });
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
     return response.data;
   } catch (error) {
     throw error.response.data;
