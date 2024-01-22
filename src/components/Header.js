@@ -21,8 +21,8 @@ const Header = () => (
             </Link>
           </li>
           <li className="nav-item">
-            <Link class="nav-link" to="/gallery">
-              Gallery
+            <Link class="nav-link" to="/todo">
+              ToDo
             </Link>
           </li>
           <li className="nav-item">

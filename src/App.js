@@ -4,7 +4,7 @@ import Posts from './components/Posts';
 import Users from './components/Users';
 import Albums from './components/Albums';
 import Photos from './components/Photos';
-import Gallery from './components/Gallery';
+import Todo from './components/Todo';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/albums" element={<Albums />} />
           <Route path="/Photos" element={<Photos />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/todo" element={<Todo />} />
         </Route>
       </Routes>
     </BrowserRouter>
