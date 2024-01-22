@@ -18,8 +18,8 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     }
 });
 
-const postSlice = ({
-    name: posts,
+const postSlice = createSlice({
+    name: 'post',
     initialState,
     extraReducers: (builder) => {
         builder.addCase(fetchPosts.pending, (state) => {
