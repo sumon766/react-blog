@@ -1,7 +1,5 @@
-import { loadOptions } from "@babel/core";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { act } from "react-dom/test-utils";
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/photos';
 
@@ -11,7 +9,7 @@ const initialState = {
     error: ''
 }
 
-export const fetchPhotos = createAsyncThunk('photos/fetchPhotos', async () {
+export const fetchPhotos = createAsyncThunk('photos/fetchPhotos', async () => {
     try {
         const response = await axios.get(apiUrl);
         return response.data;
