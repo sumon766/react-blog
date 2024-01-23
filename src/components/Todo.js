@@ -11,8 +11,21 @@ const Todo = () => {
   }, [dispatch]);
 
   return (
-    <div className="todo">
-      <h1>This is the ToDo's Page</h1>
+    <div className="todos">
+      <div className="page-title">
+        <h1>This is ToDo's Page</h1>
+      </div>
+      {todos && todos.length > 0 ? todos.map((todo) => (
+        <div className="todo" key={todo.id}>
+          {todo.title}<br/>
+          {todo.completed.toString()}
+          <br/><br/>
+        </div>
+      )) : (
+        <div className="loading">
+          <h2>Loading Todo's Data...</h2>
+        </div>
+      )}
     </div>
   );
 }
