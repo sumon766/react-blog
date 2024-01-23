@@ -1,14 +1,21 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../redux/actions/todoSlice";
+import { fetchUsers } from "../redux/actions/userSlice";
 
 const Todo = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todo.todos);
+  const users = useSelector((state) => state.user.users);
 
   useEffect(() => {
     dispatch(fetchTodos());
+    dispatch(fetchUsers());
   }, [dispatch]);
+
+  const getUserById = (userId) => {
+    return users.find((user) => user.id === userId);
+  }
 
   return (
     <div className="todos">
@@ -17,8 +24,9 @@ const Todo = () => {
       </div>
       {todos && todos.length > 0 ? todos.map((todo) => (
         <div className="todo" key={todo.id}>
-          {todo.title}<br/>
-          {todo.completed.toString()}
+          <p><b>User: </b>{getUserById(todo.userId)?.name}</p>
+          <p><b>To Do: </b>{todo.title}</p>
+          <p><b>Status: </b>{todo.completed.toString()}</p>
           <br/><br/>
         </div>
       )) : (
