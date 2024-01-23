@@ -1,45 +1,49 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAlbums } from '../redux/actions/albumSlice';
+import { fetchTodos } from '../redux/actions/todoSlice';
 import { fetchUsers } from '../redux/actions/userSlice';
 
-const Albums = () => {
+const Todo = () => {
   const dispatch = useDispatch();
-  const albums = useSelector((store) => store.album.albums);
+  const todos = useSelector((state) => state.todo.todos);
   const users = useSelector((state) => state.user.users);
 
   useEffect(() => {
-    dispatch(fetchAlbums());
+    dispatch(fetchTodos());
     dispatch(fetchUsers());
   }, [dispatch]);
 
   const getUserById = (userId) => users.find((user) => user.id === userId);
 
   return (
-    <div className="albums">
+    <div className="todos">
       <div className="page-title">
-        <h1>This is the Albums Page</h1>
+        <h1>This is ToDo&#39s Page</h1>
       </div>
-      {albums && albums.length > 0 ? albums.map((album) => (
-        <div className="album" key={album.id}>
+      {todos && todos.length > 0 ? todos.map((todo) => (
+        <div className="todo" key={todo.id}>
           <p>
-            <b>User Name: </b>
-            {getUserById(album.userId)?.name}
+            <b>User: </b>
+            {getUserById(todo.userId)?.name}
           </p>
           <p>
-            <b>Album Title: </b>
-            {album.title}
+            <b>To Do: </b>
+            {todo.title}
+          </p>
+          <p>
+            <b>Status: </b>
+            {todo.completed.toString()}
           </p>
           <br />
           <br />
         </div>
       )) : (
         <div className="loading">
-          <h2>Loading albums...</h2>
+          <h2>Loading Todo&#39s Data...</h2>
         </div>
       )}
     </div>
   );
 };
 
-export default Albums;
+export default Todo;
