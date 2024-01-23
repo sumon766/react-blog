@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchPhotos } from "../redux/actions/photoSlice";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPhotos } from '../redux/actions/photoSlice';
 
 const Photos = () => {
   const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const Photos = () => {
             </ul>
             <div>
               <button
+                type="button"
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
               >
@@ -50,6 +51,7 @@ const Photos = () => {
               </button>
               <span>{` Page ${currentPage} of ${totalPages} `}</span>
               <button
+                type="button"
                 onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
               >
