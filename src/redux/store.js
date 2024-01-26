@@ -4,6 +4,7 @@ import postReducer from './actions/postSlice';
 import photoReducer from './actions/photoSlice';
 import todoReducer from './actions/todoSlice';
 import albumReducer from './actions/albumSlice';
+import commentReducer from './actions/commentSlice';
 
 const store = configureStore({
   reducer: {
