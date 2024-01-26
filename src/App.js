@@ -4,7 +4,8 @@ import Posts from './components/Posts';
 import Users from './components/Users';
 import Albums from './components/Albums';
 import Photos from './components/Photos';
-import Todo from './components/Todo';
+import Todos from './components/Todo';
+import Comments from './components/Comments';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           <Route index element={<Posts />} />
           <Route path="/users" element={<Users />} />
           <Route path="/albums" element={<Albums />} />
-          <Route path="/Photos" element={<Photos />} />
-          <Route path="/todo" element={<Todo />} />
+          <Route path="/photos" element={<Photos />} />
+          <Route path="/todo" element={<Todos />} />
+          <Route path="/comments" element={<Comments />} />
         </Route>
       </Routes>
     </BrowserRouter>

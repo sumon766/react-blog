@@ -1,44 +1,22 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchComments } from "../redux/actions/commentSlice";
 
-const apiURL = 'https://jsonplaceholder.typicode.com/comments';
+const Comments = () => {
+    const dispatch = useDispatch();
+    const comments = useSelector((state) => state.comment.comments);
 
-const initialState = {
-    loading: false,
-    comments: [],
-    error: ''
+    useEffect(() => {
+        dispatch(fetchComments);
+    }, dispatch);
+
+    return (
+        <div className="comments">
+            <div className="comment">
+
+            </div>
+        </div>
+    );
 }
 
-export const fetchComments = createAsyncThunk('comments/fetchComments', async () => {
-    try {
-        const response = await axios.get(apiURL);
-        return response.data;
-    }
-    catch (error) {
-        throw error.response.data;
-    }
-});
-
-const commentSlice = createSlice({
-    name: 'comments',
-    initialState,
-    extraReducers: (builder) => {
-        builder.addCase(fetchComments.pending, (state) => {
-            state.loading = true;
-        });
-
-        builder.addCase(fetchComments.fulfilled, (state, action) => {
-            state.loading = false;
-            state.comments = action.payload;
-            state.error = '';
-        })
-
-        builder.addCase(fetchComments.rejected, (state, action) => {
-            state.loading = false;
-            state.comments = [];
-            state.error = action.payload;
-        })
-    }
-});
-
-export default commentSlice.reducer;
+export default Comments;

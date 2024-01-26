@@ -13,6 +13,7 @@ const store = configureStore({
     photo: photoReducer,
     todo: todoReducer,
     album: albumReducer,
+    comment: commentReducer,
   },
 });
 
