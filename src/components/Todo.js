@@ -18,7 +18,7 @@ const Todo = () => {
   return (
     <div className="todos">
       <div className="page-title">
-        <h1>This is ToDo&#39s Page</h1>
+        <h1>This is ToDos Page</h1>
       </div>
       {todos && todos.length > 0 ? todos.map((todo) => (
         <div className="todo" key={todo.id}>

@@ -6,7 +6,7 @@ const apiURL = 'https://jsonplaceholder.typicode.com/comments';
 const initialState = {
     loading: false,
     comments: [],
-    error: ''
+    error: '',
 }
 
 export const fetchComments = createAsyncThunk('comments/fetchComments', async () => {

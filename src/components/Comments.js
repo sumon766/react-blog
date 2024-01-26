@@ -7,14 +7,22 @@ const Comments = () => {
     const comments = useSelector((state) => state.comment.comments);
 
     useEffect(() => {
-        dispatch(fetchComments);
-    }, dispatch);
+        dispatch(fetchComments());
+    }, [dispatch]);
 
     return (
         <div className="comments">
-            <div className="comment">
-
-            </div>
+            {comments && comments.length > 0 ? comments.map((comment) => (
+                <div className="comment">
+                    {comment.name}<br/>
+                    {comment.email}<br/>
+                    {comment.body}<br/><br/>
+                </div>
+            )) : (
+                <div className="loading">
+                    <h3>Loading comments...</h3>
+                </div>
+            )}
         </div>
     );
 }
