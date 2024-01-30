@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPosts } from '../redux/actions/postSlice';
 import { fetchUsers } from '../redux/actions/userSlice';
 
@@ -25,7 +26,7 @@ const Posts = () => {
           <div className="post" key={post.id}>
             {getUserById(post.userId)?.name}
             <br />
-            {post.title}
+            <Link to={`/posts/${post.title}`}>{post.title}</Link>
             <br />
             {post.body}
             <br />
