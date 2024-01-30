@@ -16,7 +16,7 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/albums" element={<Albums />} />
           <Route path="/photos" element={<Photos />} />
-          <Route path="/todo" element={<Todos />} />
+          <Route path="/todos" element={<Todos />} />
           <Route path="/comments" element={<Comments />} />
         </Route>
       </Routes>
