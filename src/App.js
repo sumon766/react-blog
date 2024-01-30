@@ -7,6 +7,7 @@ import Photos from './components/Photos';
 import Todos from './components/Todo';
 import Comments from './components/Comments';
 import Post from './components/Post';
+import User from './components/User';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Posts />} />
           <Route path="/posts/:title" element={<Post />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<User />} />
           <Route path="/albums" element={<Albums />} />
           <Route path="/photos" element={<Photos />} />
           <Route path="/todos" element={<Todos />} />
