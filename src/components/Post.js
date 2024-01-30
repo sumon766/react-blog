@@ -40,6 +40,7 @@ const Post = () => {
         <h3>Comments for this post</h3>
         {postComments.map((comment) => (
           <div className="comment" key={comment.id}>
+            <p><b>Commented by:</b> {comment.email}</p>
             <p>{comment.body}</p>
             <br />
           </div>
