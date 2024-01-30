@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../redux/actions/userSlice';
 
@@ -18,7 +19,7 @@ const Users = () => {
           <div className="user" key={user.id}>
             Name:
             {' '}
-            {user.name}
+            <Link to={`/users/${user.id}`}>{user.name}</Link>
             <br />
             Username:
             {' '}

@@ -1,4 +1,3 @@
-// Post.js
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -38,7 +37,7 @@ const Post = () => {
         <p>{post.body}</p>
       </div>
       <div className="comments">
-        <h2>Comments for this post</h2>
+        <h3>Comments for this post</h3>
         {postComments.map((comment) => (
           <div className="comment" key={comment.id}>
             <p>{comment.body}</p>
