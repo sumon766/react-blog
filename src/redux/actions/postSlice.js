@@ -27,6 +27,16 @@ export const createPost = createAsyncThunk('posts/createpost', async (newPost) =
   }
 });
 
+export const deletePost = createAsyncThunk('posts/deletePost', async (postId) => {
+  try {
+    const response = await axios.delete(`${apiUrl}/${postId}`);
+    return response.data;
+  }
+  catch (error) {
+    throw error.response.data;
+  }
+});
+
 const postSlice = createSlice({
   name: 'post',
   initialState,
@@ -34,13 +44,11 @@ const postSlice = createSlice({
     builder.addCase(fetchPosts.pending, (state) => {
       state.loading = true;
     });
-
     builder.addCase(fetchPosts.fulfilled, (state, action) => {
       state.loading = false;
       state.posts = action.payload;
       state.error = '';
     });
-
     builder.addCase(fetchPosts.rejected, (state, action) => {
       state.loading = false;
       state.posts = [];
@@ -50,7 +58,6 @@ const postSlice = createSlice({
     builder.addCase(createPost.pending, (state) => {
       state.loading = true;
     });
-
     builder.addCase(createPost.fulfilled, (state, action) => {
       state.loading = false;
       state.posts = state.posts.map((post) => (
@@ -65,11 +72,25 @@ const postSlice = createSlice({
         body: '',
       };
     });
-
     builder.addCase(createPost.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
       state.successfullSubmission = false;
+    });
+
+    builder.addCase(deletePost.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(deletePost.fulfilled, (state, action) => {
+      state.loading = false;
+      state.posts = state.posts.filter((post) => (
+        post.id === action.payload
+      ));
+      state.error = ''
+    });
+    builder.addCase(deletePost.rejected, (state) => {
+      state.loading = false;
+      state.error = action.payload
     });
   },
 });
