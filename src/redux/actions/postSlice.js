@@ -58,6 +58,7 @@ const postSlice = createSlice({
       state.loading = false;
       state.posts = state.posts.map(post => post.id === action.payload.id ? action.payload : post);
       state.error = '';
+      state.successfulSubmission = true;
 
       state.newPost = {
         userId: 1,
@@ -69,6 +70,7 @@ const postSlice = createSlice({
     builder.addCase(createPost.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
+      state.successfullSubmission = false;
     });
   },
 });
