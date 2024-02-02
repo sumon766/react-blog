@@ -13,8 +13,7 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   try {
     const response = await axios.get(apiUrl);
     return response.data;
-  } 
-  catch (error) {
+  } catch (error) {
     throw error.response.data;
   }
 });
@@ -22,10 +21,8 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
 export const createPost = createAsyncThunk('posts/createpost', async (newPost) => {
   try {
     const response = await axios.post(apiUrl, newPost);
-    console.log('api response', response.data);
     return response.data;
-  }
-  catch (error) {
+  } catch (error) {
     throw error.response.data;
   }
 });
@@ -56,16 +53,18 @@ const postSlice = createSlice({
 
     builder.addCase(createPost.fulfilled, (state, action) => {
       state.loading = false;
-      state.posts = state.posts.map(post => post.id === action.payload.id ? action.payload : post);
+      state.posts = state.posts.map((post) => (
+        post.id === action.payload.id ? action.payload : post
+      ));
       state.error = '';
       state.successfulSubmission = true;
 
       state.newPost = {
         userId: 1,
-        title: "",
-        body: ""
+        title: '',
+        body: '',
       };
-    });    
+    });
 
     builder.addCase(createPost.rejected, (state, action) => {
       state.loading = false;
