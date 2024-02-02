@@ -19,9 +19,10 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   }
 });
 
-export const createPost = createAsyncThunk('posts/createposts', async (newPost) => {
+export const createPost = createAsyncThunk('posts/createpost', async (newPost) => {
   try {
     const response = await axios.post(apiUrl, newPost);
+    console.log('api response', response.data);
     return response.data;
   }
   catch (error) {
@@ -57,7 +58,13 @@ const postSlice = createSlice({
       state.loading = false;
       state.posts = state.posts.map(post => post.id === action.payload.id ? action.payload : post);
       state.error = '';
-    });
+
+      state.newPost = {
+        userId: 1,
+        title: "",
+        body: ""
+      };
+    });    
 
     builder.addCase(createPost.rejected, (state, action) => {
       state.loading = false;

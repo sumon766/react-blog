@@ -1,4 +1,4 @@
-import { createElement, useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../redux/actions/postSlice";
 
@@ -14,7 +14,14 @@ const NewPost = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(newPost));
+
+    const userId = parseInt(document.getElementById('userId').value, 10);
+    const title = document.getElementById('title').value;
+    const body = document.getElementById('body').value;
+
+    const postData = { userId, title, body };
+
+    dispatch(createPost(postData));
 
     setNewPost({
         userId: 1,
@@ -48,6 +55,9 @@ const NewPost = () => {
           <button type="submit" class="btn btn-success">
             {loading ? "Submitting..." : "Submit"}
           </button>
+          {loading && <p>Please wait...</p>}
+            {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+            {!loading && !error && <p style={{ color: 'green' }}>Post submitted successfully!</p>}
           <br />
         </form>
       </div>
