@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { createElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from "../redux/actions/postSlice";
 
 const NewPost = () => {
   const dispatch = useDispatch();
-  const {loading, posts, error} = useSelector((state) => state.posts);
+  const {loading, posts, error} = useSelector((state) => state.post);
 
   const [newPost, setNewPost] = useState({
     userId: 1,
@@ -12,8 +12,15 @@ const NewPost = () => {
     body: ""
   });
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createPost(newPost));
 
+    setNewPost({
+        userId: 1,
+        title: "",
+        body: ""
+    });
   }
 
   return (
@@ -22,7 +29,7 @@ const NewPost = () => {
         <h1>Create a new post</h1>
       </div>
       <div className="post-form">
-        <form action="" method="POST">
+        <form onSubmit={handleFormSubmit}>
           <div class="form-group">
             <label for="userId">User ID (1-8)</label>
             <input type="number" class="form-control" id="userId" />
@@ -38,7 +45,10 @@ const NewPost = () => {
             <textarea class="form-control" rows="5" id="body"></textarea>
           </div>
           <br />
-          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success">
+            {loading ? "Submitting..." : "Submit"}
+          </button>
+          <br />
         </form>
       </div>
     </div>
