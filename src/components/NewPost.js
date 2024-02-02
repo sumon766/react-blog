@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
 
-const NewPost = () => {
-    const dispatch = useDispatch();
+const NewPost = () => (
+  <div className="new-post">
+    <div className="page-title">
+      <h1>Create a new post</h1>
+    </div>
 
-    return (
-        <div className="new-post">
-            <div className="page-title">
-                <h1>Create a new post</h1>
-            </div>
-
-            
-        </div>
-    );
-}
-
+  </div>
+);
 export default NewPost;

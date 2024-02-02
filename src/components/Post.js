@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchComments } from "../redux/actions/commentSlice";
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchComments } from '../redux/actions/commentSlice';
 
 const Post = () => {
   const { title } = useParams();
@@ -40,7 +40,11 @@ const Post = () => {
         <h3>Comments for this post</h3>
         {postComments.map((comment) => (
           <div className="comment" key={comment.id}>
-            <p><b>Commented by:</b> {comment.email}</p>
+            <p>
+              <b>Commented by:</b>
+              {' '}
+              {comment.email}
+            </p>
             <p>{comment.body}</p>
             <br />
           </div>

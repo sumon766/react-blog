@@ -23,7 +23,7 @@ const Posts = () => {
           <h1>List of Posts</h1>
         </div>
         <div className="new">
-          <Link to={`/posts/new`}>Create new post</Link>
+          <Link to="/posts/new">Create new post</Link>
         </div>
       </div>
       <div className="posts">
