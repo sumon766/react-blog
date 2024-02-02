@@ -19,7 +19,12 @@ const Posts = () => {
   return (
     <div className="post-area">
       <div className="page-title">
-        <h1>List of Posts</h1>
+        <div className="title">
+          <h1>List of Posts</h1>
+        </div>
+        <div className="new">
+          <Link to={`/posts/new`}>Create new post</Link>
+        </div>
       </div>
       <div className="posts">
         {posts && posts.length > 0 ? posts.map((post) => (
