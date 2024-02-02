@@ -21,7 +21,7 @@ const Header = () => (
             </Link>
           </li>
           <li className="nav-item">
-            <Link class="nav-link" to="/todo">
+            <Link class="nav-link" to="/todos">
               ToDos
             </Link>
           </li>
@@ -30,11 +30,11 @@ const Header = () => (
               Users
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link class="nav-link" to="/comments">
               Comments
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

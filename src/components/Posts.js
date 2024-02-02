@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPosts } from '../redux/actions/postSlice';
 import { fetchUsers } from '../redux/actions/userSlice';
 
@@ -18,14 +19,19 @@ const Posts = () => {
   return (
     <div className="post-area">
       <div className="page-title">
-        <h1>List of Posts</h1>
+        <div className="title">
+          <h1>List of Posts</h1>
+        </div>
+        <div className="new">
+          <Link to="/posts/new">Create new post</Link>
+        </div>
       </div>
       <div className="posts">
         {posts && posts.length > 0 ? posts.map((post) => (
           <div className="post" key={post.id}>
             {getUserById(post.userId)?.name}
             <br />
-            {post.title}
+            <Link to={`/posts/${post.title}`}>{post.title}</Link>
             <br />
             {post.body}
             <br />
